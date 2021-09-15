@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^16.9.1",
     "ts-node": "^10.2.1",
