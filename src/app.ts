@@ -1,4 +1,5 @@
 import express, { Application, NextFunction, Request, Response } from 'express';
+import { json } from 'body-parser';
 
 const app: Application = express();
 
@@ -34,9 +35,22 @@ const validate = (req: Request, res: Response, next: NextFunction) => {
     }    
 }
 
+app.use(express.static('./src/public'));
+app.use(json());
 
 app.get('/users', authenticate, (req: Request, res: Response) => {
     res.json([{name: 'user1'}]);
+});
+
+app.post('/users', (req: Request, res: Response) => {
+    console.log(req.body);
+    const { username, password } = req.body;
+    if(username && password){
+        users.push({username, password});
+        res.send('done');
+        return;
+    }
+    res.status(500).send({msg: 'not valid'});
 });
 
 app.get('/users/:username', validate, authenticate, (req: Request, res: Response) => {
@@ -47,9 +61,9 @@ app.get('/users/:username', validate, authenticate, (req: Request, res: Response
 
 // app.use(logger);
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('hello');
-});
+// app.get('/', (req: Request, res: Response) => {
+//     res.send('hello');
+// });
 
 
 app.listen(3000, () => {
