@@ -28,11 +28,11 @@ const validate = (req: Request, res: Response, next: NextFunction) => {
 }
 
 
-app.get('/users', (req: Request, res: Response) => {
+app.get('/users', authenticate, (req: Request, res: Response) => {
     res.json([{name: 'user1'}]);
 });
 
-app.get('/users/:username', validate, (req: Request, res: Response) => {
+app.get('/users/:username', validate, authenticate, (req: Request, res: Response) => {
     console.log(req.params);
     console.log(req.query);
     res.send(`Your name is:${req.params.username}- ${req.query.type}`);
