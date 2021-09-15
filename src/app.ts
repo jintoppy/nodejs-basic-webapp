@@ -13,8 +13,15 @@ const users = [
     }
 ];
 
-const authenticate = () => {
-
+const authenticate = (req: Request, res: Response, next: NextFunction) => {
+    const { username, password } = req.query;
+    const matchingUser = users.find(u => u.username === username && u.password === password);
+    if(matchingUser){
+        next();
+    }
+    else {
+        res.send('You are not allowd to access this url');
+    }
 };
 
 //middleware
