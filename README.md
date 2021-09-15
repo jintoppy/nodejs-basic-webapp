@@ -6,3 +6,8 @@
 
 1. (Nodemon)[https://github.com/remy/nodemon]
 2. (PM2)[https://pm2.keymetrics.io/]
+
+
+https://expressjs.com/en/guide/using-template-engines.html
+https://ejs.co/
+https://handlebarsjs.com/
