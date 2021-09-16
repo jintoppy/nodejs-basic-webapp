@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "nodemon ./src/app.ts"
+    "start": "nodemon ./src/app.ts",
+    "dev": "nodemon --inspect src/app.ts"
   },
   "keywords": [],
   "author": "",

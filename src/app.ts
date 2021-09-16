@@ -38,8 +38,9 @@ const validate = (req: Request, res: Response, next: NextFunction) => {
 app.use(express.static('./src/public'));
 app.use(json());
 
-app.get('/users', authenticate, (req: Request, res: Response) => {
+app.get('/users', (req: Request, res: Response) => {
     res.json([{name: 'user1'}]);
+    console.log('helo');
 });
 
 app.post('/users', (req: Request, res: Response) => {
